@@ -24,11 +24,11 @@ class Window(QtGui.QMainWindow):
         vertikalerAbstand = 40
 
         #Kilometerstand
-        lineInKilometerstand = QtGui.QLineEdit(self)
-        lineInKilometerstand.move(50, 10)
-        lineInKilometerstand.resize(200, 30)
-        lineInKilometerstand.setPlaceholderText("Kilometerstand")
-        lineInKilometerstand.setValidator(QtGui.QIntValidator(0, 100000, self))
+        self.lineInKilometerstand = QtGui.QLineEdit(self)
+        self.lineInKilometerstand.move(50, 10)
+        self.lineInKilometerstand.resize(200, 30)
+        self.lineInKilometerstand.setPlaceholderText("Kilometerstand")
+        self.lineInKilometerstand.setValidator(QtGui.QIntValidator(0, 100000, self))
 
         #Datum
         lineInDatum = QtGui.QLineEdit(self)
@@ -55,10 +55,28 @@ class Window(QtGui.QMainWindow):
         lineInGrundpreis.resize(200, 30)
         lineInGrundpreis.setPlaceholderText("Grundpreis in €/l")
 
+        btnSchreibeDB = QtGui.QPushButton("Schreibe in DB", self)
+        btnSchreibeDB.clicked.connect(self.schreibeDatenbank)
+        btnSchreibeDB.move(50, 10+(4*vertikalerAbstand))
+        btnSchreibeDB.resize(150, 30)
 
 
 
         self.show()
+
+
+
+
+    def schreibeDatenbank(self):
+
+        kilometerstandAlt = self.lineInKilometerstand.text()
+        if kilometerstandAlt == self.lineInKilometerstand.text():
+            print("Fehler. Neue Daten eingeben")
+        else:
+            print(kilometerstandAlt)
+            print("test")
+        
+
 
 def run():
     app = QtGui.QApplication(sys.argv)
