@@ -29,6 +29,7 @@ class Window(QtGui.QMainWindow):
         self.lineInKilometerstand.resize(200, 30)
         self.lineInKilometerstand.setPlaceholderText("Kilometerstand")
         self.lineInKilometerstand.setValidator(QtGui.QIntValidator(0, 100000, self))
+        self.lineInKilometerstand.editingFinished.connect(self.textAngepasst)
 
         #Datum
         lineInDatum = QtGui.QLineEdit(self)
@@ -65,16 +66,22 @@ class Window(QtGui.QMainWindow):
         self.show()
 
 
+    feldLeer = True
+    def textAngepasst(self):
+        feldLeer = False
+        print(self.lineInKilometerstand.text())
 
-
+    kilometerstandAlt = 0
     def schreibeDatenbank(self):
 
-        kilometerstandAlt = self.lineInKilometerstand.text()
-        if kilometerstandAlt == self.lineInKilometerstand.text():
+        
+        #kilometerstandAlt = self.lineInKilometerstand.text()
+        if (kilometerstandAlt == self.lineInKilometerstand.text()) or feldLeer == True:
             print("Fehler. Neue Daten eingeben")
         else:
             print(kilometerstandAlt)
             print("test")
+            kilometerstandAlt = self.lineInKilometerstand.text()
         
 
 
