@@ -34,7 +34,7 @@ class Window(QtGui.QMainWindow):
 
         #Datum
         self.lineInDatum = QtGui.QCalendarWidget(self)
-        self.lineInDatum.setFirstDayOfWeek(self, QtDayOfWeek=1)
+        #self.lineInDatum.setFirstDayOfWeek(self, QtDayOfWeek=1)
         self.lineInDatum.setGridVisible(True)
         #self.lineInDatum = QtGui.QLineEdit(self)
         self.lineInDatum.move(300, 10)
